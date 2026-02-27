@@ -6,7 +6,7 @@ A lightweight and composable validation library for Swift.
 
 ### Swift Package Manager
 ```swift
-.package(url: "https://github.com/TU_USUARIO/ValidatorKit", from: "1.0.0")
+.package(url: "https://github.com/jonacruz/ValidatorKit", from: "1.0.0")
 ```
 
 ## Usage
