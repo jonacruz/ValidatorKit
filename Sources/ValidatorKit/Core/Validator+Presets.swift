@@ -38,4 +38,10 @@ public extension Validator where Value == String {
             .add(NonEmptyRule())
             .add(URLRule())
     }
+
+    static var creditCard: Validator<String> {
+        Validator()
+            .add(NonEmptyRule())
+            .add(CreditCardRule())
+    }
 }

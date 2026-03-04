@@ -68,13 +68,28 @@ public struct RegexRule: ValidationRule {
     public typealias Value = String
     public var errorMessage: String
     let pattern: String
-    
+
     public init(_ pattern: String, message: String = "Invalid Format") {
         self.pattern = pattern
         self.errorMessage = message
     }
-    
+
     public func validate(_ value: String) -> Bool {
         value.range(of: pattern, options: .regularExpression) != nil
+    }
+}
+
+public struct AllowedCharactersRule: ValidationRule {
+    public typealias Value = String
+    public var errorMessage: String
+    private let characterSet: CharacterSet
+
+    public init(_ characterSet: CharacterSet, message: String = "Contains invalid characters") {
+        self.characterSet = characterSet
+        self.errorMessage = message
+    }
+
+    public func validate(_ value: String) -> Bool {
+        value.unicodeScalars.allSatisfy { characterSet.contains($0) }
     }
 }
